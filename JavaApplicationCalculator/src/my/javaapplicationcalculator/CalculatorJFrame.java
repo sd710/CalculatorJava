@@ -1,5 +1,8 @@
 package my.javaapplicationcalculator;
 
+import java.text.DecimalFormat;
+import java.text.NumberFormat;
+
 public class CalculatorJFrame extends javax.swing.JFrame {
 
     public CalculatorJFrame() {
@@ -20,7 +23,7 @@ public class CalculatorJFrame extends javax.swing.JFrame {
         jButtonDigit8 = new javax.swing.JButton();
         jButtonDigit0 = new javax.swing.JButton();
         jButtonDigit9 = new javax.swing.JButton();
-        jButtonDigit10 = new javax.swing.JButton();
+        jButtonNegativePositiveNumber = new javax.swing.JButton();
         jButtonPercent = new javax.swing.JButton();
         jButtonAllClear = new javax.swing.JButton();
         jButtonMultiplication = new javax.swing.JButton();
@@ -144,10 +147,15 @@ public class CalculatorJFrame extends javax.swing.JFrame {
             }
         });
 
-        jButtonDigit10.setBackground(new java.awt.Color(102, 102, 102));
-        jButtonDigit10.setText("+/-");
-        jButtonDigit10.setContentAreaFilled(false);
-        jButtonDigit10.setOpaque(true);
+        jButtonNegativePositiveNumber.setBackground(new java.awt.Color(102, 102, 102));
+        jButtonNegativePositiveNumber.setText("+/-");
+        jButtonNegativePositiveNumber.setContentAreaFilled(false);
+        jButtonNegativePositiveNumber.setOpaque(true);
+        jButtonNegativePositiveNumber.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonOperationActionPerformed(evt);
+            }
+        });
 
         jButtonPercent.setBackground(new java.awt.Color(102, 102, 102));
         jButtonPercent.setText("%");
@@ -220,7 +228,7 @@ public class CalculatorJFrame extends javax.swing.JFrame {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jButtonAllClear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonDigit10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButtonNegativePositiveNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonPercent, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -266,7 +274,7 @@ public class CalculatorJFrame extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonPercent, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButtonDigit10, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonNegativePositiveNumber, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonAllClear, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButtonDivision, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -299,6 +307,17 @@ public class CalculatorJFrame extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     boolean numberOfInput = false;
+    private double displayValue;
+    public double getDisplayValue(String stringDisplayValue){
+        return Double.parseDouble(stringDisplayValue);
+    }
+    public void setDisplayValue(double doubleDisplayValue){
+        NumberFormat nf = new DecimalFormat("#.#####");
+        jLabelMainWindow.setText(nf.format(doubleDisplayValue));
+    }
+        
+    
+
     
     private void jButtonDigitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonDigitActionPerformed
         String currentDigit = evt.getActionCommand();
@@ -316,8 +335,16 @@ public class CalculatorJFrame extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonDigitActionPerformed
     
     private void jButtonMathematicalOperationsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonMathematicalOperationsActionPerformed
-        // TODO add your handling code here:
+        
     }//GEN-LAST:event_jButtonMathematicalOperationsActionPerformed
+
+    private void jButtonOperationActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonOperationActionPerformed
+        String mathematicalOperation = evt.getActionCommand();
+        if (mathematicalOperation.equalsIgnoreCase("+/-")){
+            displayValue = getDisplayValue(jLabelMainWindow.getText());
+            setDisplayValue(displayValue * (-1));
+        }
+    }//GEN-LAST:event_jButtonOperationActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -347,7 +374,6 @@ public class CalculatorJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonAllClear;
     private javax.swing.JButton jButtonDigit0;
     private javax.swing.JButton jButtonDigit1;
-    private javax.swing.JButton jButtonDigit10;
     private javax.swing.JButton jButtonDigit16;
     private javax.swing.JButton jButtonDigit17;
     private javax.swing.JButton jButtonDigit2;
@@ -360,6 +386,7 @@ public class CalculatorJFrame extends javax.swing.JFrame {
     private javax.swing.JButton jButtonDigit9;
     private javax.swing.JButton jButtonDivision;
     private javax.swing.JButton jButtonMultiplication;
+    private javax.swing.JButton jButtonNegativePositiveNumber;
     private javax.swing.JButton jButtonPercent;
     private javax.swing.JButton jButtonSubtraction;
     private javax.swing.JLabel jLabelMainWindow;

@@ -33,7 +33,7 @@
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jButtonAllClear" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
-                      <Component id="jButtonDigit10" min="-2" pref="50" max="-2" attributes="0"/>
+                      <Component id="jButtonNegativePositiveNumber" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jButtonPercent" min="-2" pref="50" max="-2" attributes="0"/>
                       <EmptySpace max="-2" attributes="0"/>
@@ -90,7 +90,7 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButtonPercent" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
-                  <Component id="jButtonDigit10" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
+                  <Component id="jButtonNegativePositiveNumber" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="jButtonAllClear" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
                   <Component id="jButtonDivision" alignment="3" min="-2" pref="50" max="-2" attributes="0"/>
               </Group>
@@ -279,7 +279,7 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonDigitActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButtonDigit10">
+    <Component class="javax.swing.JButton" name="jButtonNegativePositiveNumber">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
           <Color blue="66" green="66" red="66" type="rgb"/>
@@ -288,6 +288,9 @@
         <Property name="contentAreaFilled" type="boolean" value="false"/>
         <Property name="opaque" type="boolean" value="true"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonOperationActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="jButtonPercent">
       <Properties>
